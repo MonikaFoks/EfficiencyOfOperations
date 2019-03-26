@@ -2,15 +2,19 @@
 #ifndef MYTIME_H
 #define MYTIME_H
 
-class MyTime {
+class MyTime
+{
 public:
-	long long int freq, start, elapsed;
 	MyTime();
 	virtual ~MyTime();
-	void time_start();
-	void time_stop();
+	long long int freq, start, elapsed;
 	long long int read_QPC();
+	void start_time();
+	void stop_time();
+
+protected:
+private:
 };
 
-#endif // !MYTIME_H
+#endif MYTIME_H
 
