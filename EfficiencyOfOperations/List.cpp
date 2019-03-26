@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <fstream>
 #include <string.h>
+#include <string>
 #include <cstdlib>
 
 using namespace std;
@@ -91,4 +92,50 @@ ListElement *List::find_element(int value) {
 		p = p->next;
 	}
 	return NULL; //jeœli nic nie znaleziono
+}
+
+void List::pop_random(int index) {
+	pop(index_find(index));
+}
+
+void List::put_before(int element, int value) {
+	n++;
+	ListElement *before = index_find(element);	//znajduje wskaŸnik na element, przed którym mamy wstawiæ nowy
+	if (before == head)
+		push_front(value); 
+	else {
+		ListElement *new_element = new ListElement;	//tworzymy nowy element
+		new_element->data = value;	//nadanie mu odpowiedniej wartoœci
+		new_element->next = before;
+		before->prev->next = new_element;
+		before->prev = new_element;
+	}
+}
+
+void List::read_file(int value) {
+	string str;
+	fstream file("20000.txt", ios::in);
+	if (file.good()) {
+		for (int i = 0; i < value; i++) {
+			getline(file, str);
+			char tmp[sizeof(str)];
+			strcpy_s(tmp, str.c_str());
+			int number = atoi(tmp);
+			push_back(number);
+		}
+		file.close();
+	}
+}
+
+ListElement *List::index_find(int index) {
+	int i = 0;
+	ListElement *p = head;
+	while (p) {
+		if (i == index) {
+			return p;
+		}
+		p = p->next;
+		i++;
+	}
+	return NULL;
 }
