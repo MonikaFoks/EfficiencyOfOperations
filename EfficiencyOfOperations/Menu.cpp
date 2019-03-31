@@ -1,5 +1,6 @@
 #include "MyTime.h"
 #include "List.h"
+#include "Array.h"
 #include "Menu.h"
 #include <cstdlib>
 #include <iostream>
@@ -61,8 +62,19 @@ void Menu::show_list() {
 		case 1:
 		{
 			MyTime time;
-
+			int temp;
+			cout << "How many elements do you want to add?" << endl;
+			cin >> temp;
+			time.start_time();	//generacja losowych liczb; ich iloœæ = temp
+			if (temp > 0) {
+				for (int i = 0; i < temp; i++) {
+					int random = rand() % 30000;
+					list_menu.push_front(random);
+				}
+			}
+			time.stop_time();
 		}
+		break;
 		}
 	}
 }

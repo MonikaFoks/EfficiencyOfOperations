@@ -3,6 +3,7 @@
 #define MENU_H
 
 #include <iostream>
+#include "MyTime.h"
 
 class Menu {
 public:
