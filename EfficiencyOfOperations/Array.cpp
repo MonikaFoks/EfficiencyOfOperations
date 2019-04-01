@@ -204,7 +204,7 @@ void Array::read_file(int value) //wczytywanie z pliku wartosci
 		{
 			getline(file, str); //wczytywanie zmiennej w formie string
 			char temp[sizeof(str)];
-			strcpy(temp, str.c_str());
+			strcpy_s(temp, str.c_str());
 			int number = atoi(temp);// zamiana zmiennej na int
 			push_front(number);//wpisywanie zmiennej do tablicy
 		}

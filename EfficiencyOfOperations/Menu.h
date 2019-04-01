@@ -14,9 +14,9 @@ public:
 	virtual ~Menu();
 
 	void show();
-	//void show_array();
+	void show_array();
 	void show_list();
-	//void show_heap();
-	//void show_tree();
+	void show_heap();
+	void show_tree();
 };
 #endif // MENU_H
